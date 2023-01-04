@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header'); -%>
+
+    <body>
+        <!-- Navigation-->
+        <%- include('layouts/navbar'); -%>
+            <!-- Page Header-->
+            <header class="masthead" style="background-image: url('/img/Paris_Museo.jpeg')"">
+                <div class="container position-relative px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="page-heading">
+                                <h1>Registrar Paciente </h1>
+                                <span class="subheading"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Main Content-->
+            <main class="mb-4">
+                <div class="container px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            
+                            <div class="my-5">
+                                <% if(errors !=null && errors.length> 0){ %>
+                                    <ul class="list-group"></ul>
+                                    <% for (var i=0; i < errors.length; i++) { %>
+                                        <li class="list-group-item list-group-item-danger">
+                                            <%= errors[i] %>
+                                        </li>
+                                        <% } %>
+                                            </ul>
+                                            <% } %>
+                                                <form action="/patients/store" method="post" enctype="multipart/form-data">
+                                                    <div class="form-floating">
+                                                          <input class="form-control" id="primerNombre" name="primerNombre" type="text"
+                                                            placeholder="primerNombre"  required/>
+                                                        <label>Primer Nombre</label>
+                                                    </div>
+                                                    <div class="form-floating">
+                                                        <input class="form-control" id="segundoNombre" name="segundoNombre" type="text"
+                                                            placeholder="segundoNombre"  required/>
+                                                        <label>Segundo Nombre</label>
+                                                    </div>
+                                                    <div class="form-floating">
+                                                          <input class="form-control" id="primerApellido" name="primerApellido" type="text"
+                                                            placeholder="primerApellido"  required/>
+                                                        <label>Primer Apellido</label>
+                                                    </div>
+                                                    <div class="form-floating">
+                                                        <input class="form-control" id="segundoApellido" name="segundoApellido" type="text"
+                                                          placeholder="segundoApellido"  required/>
+                                                      <label>Segundo Apellido</label>
+                                                  </div>
+                                                  <!-- Inicia Ejemplo-->
+                                                  <div class="form-floating">
+                                                    <input class="form-control" id="sexo" name="sexo" type="text"
+                                                      placeholder="sexo"  required/>
+                                                  <label>Sexo</label>
+                                                    </div>
+                                                    <!-- Termina Ejemplo-->
+                                                      <label>Fecha de Consulta</label>
+                                                        <p><input type="date" name="fecha">
+                                                            <hr>
+                                                            <label>Correo Electronico</label>
+                                                            <p><input type="text" name="e_mail">  
+                                                                <hr>
+                                                                <label>Direccion</label>
+                                                                <p><input type="text" name="direccion"> 
+                                                                    <hr>
+                                                                    <label>Celular</label>
+                                                                    <p><input type="number" name="celular"> 
+                                                                        <hr>
+                                                                        <label>cedula</label>
+                                                                        <p><input type="number" name="_id"> 
+                                                                            <hr>
+                                                                            <label>Fecha Nacimiento</label>
+                                                                            <p><input type="date" name="f_naci"> 
+                                                                                <hr>
+                                                                                <label>Edad</label>
+                                                                                <p><input type="number" name="edad"> 
+                                                                                    <hr>
+                                                                                    <label>Régimen</label>
+                                                                                    <input type="text" name="regimen"> 
+                                                                                    <hr>
+                                                                                    <label>E.P.S</label>
+                                                                                        <p><input type="text" name="eps"> 
+                                                                                        <hr>
+                                                                                            <label>Autorizacion</label>
+                                                                                            <p><input type="text" name="autorizacion">
+                       <hr>                                                                         
+                                                                                                <label>Valor Procedimiento</label>
+                                                                                            <p><input type="text" name="valor">
+                                                                        <hr>                                                                                           
+                                                                        <div class="form-floating">
+                                                                            <label>Antecedentes</label>
+                                                                            <input class="form-control" id="antecedentes" name="antecedentes" type="text"
+                                                                              placeholder="antecedentes"  required/>
+                                                                         
+                                                                            </div>
+                                                                       <!-- <label>Antecedentes</label>
+                                                                                                <!--<input type="text" name="antecedentes">--
+                                                                                                <textarea id="antecedentes" value="antecedentes" name="editor1" rows="4" cols="100" required></textarea>
+                                                                        -->                     <p>
+                                                                      </div>
+                                                                                            
+                                                    <!-- Ajustar siguientes campos -->
+                                                    <!--<div class="form-floating">
+                                                        
+                                                            <li>Acompañante</li>
+                                                            <li>Motivo consulta</li>                                                            
+                                                            <li>Evolucion</li>
+                                                        </ul>
+                                                    </div>-->    
+                                                    
+                                                    <br />
+                                                    <!-- Submit Button-->
+                                                    <button type="submit" class="btn btn-primary"
+                                                        id="submitButton">Registrar Paciente</button>
+                                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <!-- Footer-->
+            <%- include('layouts/footer'); -%>
+                <%- include('layouts/scripts'); -%>
+                <script>
+                    CKEDITOR.replace('editor1', {
+                      height: 150,
+                      removeButtons: 'PasteFromWord'
+                
+                    });   
+                    </script>  
+                
+
+    </body>
+
+</html>

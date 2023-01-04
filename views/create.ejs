@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header'); -%>
+
+    <body>
+        <!-- Navigation-->
+        <%- include('layouts/navbar'); -%>
+            <!-- Page Header-->
+            <header class="masthead" style="background-image: url('/img/contact-bg.jpg')">
+                <div class="container position-relative px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="page-heading">
+                                <h1>Create New Post </h1>
+                                <span class="subheading">Have questions? I have answers.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Main Content-->
+            <main class="mb-4">
+                <div class="container px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <p>Create an awesome post!</p>
+                            <div class="my-5">
+                                <% if(errors !=null && errors.length> 0){ %>
+                                    <ul class="list-group"></ul>
+                                    <% for (var i=0; i < errors.length; i++) { %>
+                                        <li class="list-group-item list-group-item-danger">
+                                            <%= errors[i] %>
+                                        </li>
+                                        <% } %>
+                                            </ul>
+                                            <% } %>
+                                                <form action="/posts/store" method="post" enctype="multipart/form-data">
+                                                    <div class="form-floating">
+                                                        <!-- <input class="form-control" id="title" name="title" type="text" placeholder="Title" value="<%= title %>" required  oninvalid="alert('Debes agregar el titulo!');" /> -->
+
+                                                        <input class="form-control" id="title" name="title" type="text"
+                                                            placeholder="Title" value="<%= title %>" required
+                                                            oninvalid="Swal.fire('Debes agregar el titulo!');" />
+                                                        <label>Title</label>
+                                                    </div>
+                                                    <div class="form-floating">
+                                                        <!-- <textarea rows="5" class="form-control" id="body" name="body" value="<%= body %>" required oninvalid="alert('Debes agregar el cuerpo del post!');"></textarea> -->
+                                                        <label>Description</label>
+                                                        <textarea rows="5" class="form-control" id="body" name="body"
+                                                            value="<%= body %>" required
+                                                            oninvalid="Swal.fire('Debes agregar el cuerpo del post!');"></textarea>
+                                                        <script>
+                                                            $('#body').summernote({
+                                                                placeholder: 'Hello bootstrap 4',
+                                                                tabsize: 2,
+                                                                height: 200
+                                                            });
+                                                        </script>
+
+
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <div class="form-group floating-label-form-group controls">
+                                                            <label>Image</label>
+                                                            <input type="file" class="form-control" id="image"
+                                                                name="image" value="<%= image %>" required
+                                                                oninvalid="Swal.fire('Debes agregar una imagen!');">
+                                                        </div>
+                                                    </div>
+                                                    <br />
+
+                                                    <!-- Submit Button-->
+                                                    <button type="submit" class="btn btn-primary"
+                                                        id="submitButton">Send</button>
+                                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <!-- Footer-->
+            <%- include('layouts/footer'); -%>
+                <%- include('layouts/scripts'); -%>
+
+    </body>
+
+</html>
